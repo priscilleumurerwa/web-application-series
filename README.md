@@ -5,7 +5,6 @@ modal name : user, task
   *  email :varchar
   *  location :string
    *  id: integer
-
 * task
   *  beginning date: varchar
   *  name :string
