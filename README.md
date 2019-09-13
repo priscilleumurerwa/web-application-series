@@ -1,15 +1,15 @@
-modal name : users, task
+modal name : user, task
  
-* users
-  * users names :string
-  * users email :varchar
-  * users location :string
-   * users id: integer
+* user
+  *  names :string
+  *  email :varchar
+  *  location :string
+   *  id: integer
 
 * task
-  * task beginning date: varchar
-  * task name :string
-  * task title :text
-  * task id :integer
-  * task ending date :varchar
+  *  beginning date: varchar
+  *  name :string
+  *  title :text
+  *  id :integer
+  *  ending date :varchar
     
