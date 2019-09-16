@@ -45,7 +45,6 @@ group :development, :test do
     # Omission
     
     group :test do
-  （Omission）
    gem 'database_cleaner'
    end  
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
