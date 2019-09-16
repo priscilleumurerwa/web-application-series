@@ -37,6 +37,17 @@ gem 'jbuilder', '~> 2.5'
 gem 'bootsnap', '>= 1.1.0', require: false
 
 group :development, :test do
+    # Omission
+    gem 'database_cleaner'
+    gem 'factory_bot_rails'
+    gem 'rspec-rails'
+    gem 'spring-commands-rspec'
+    # Omission
+    
+    group :test do
+  （Omission）
+   gem 'database_cleaner'
+   end  
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
 end
