@@ -1,4 +1,4 @@
-# In this require, the feature required for Feature Spec such as Capybara are available.
+rails # In this require, the feature required for Feature Spec such as Capybara are available.
 require 'rails_helper'
 
 # On the right side of this RSpec.feature, write the test item name like "task management feature" (grouped by do ~ end)
