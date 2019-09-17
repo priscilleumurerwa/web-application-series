@@ -12,33 +12,33 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :names %>
-    <%= form.text_field :names %>
+    <%= form.label :name %>
+    <%= form.text_field :name %>
   </div>
 
   <div class="field">
-    <%= form.label :email %>
-    <%= form.text_field :email %>
+    <%= form.label :content %>
+    <%= form.text_field :content %>
   </div>
 
   <div class="field">
-    <%= form.label :location %>
-    <%= form.text_field :location %>
+    <%= form.label :status %>
+    <%= form.text_field :status %>
+  </div>
+
+  <div class="field">
+    <%= form.label :priority %>
+    <%= form.text_field :priority %>
   </div>
 
   <div class="field">
     <%= form.label :beginning_date %>
-    <%= form.date_select :beginning_date %>
-  </div>
-
-  <div class="field">
-    <%= form.label :title %>
-    <%= form.text_area :title %>
+    <%= form.datetime_select :beginning_date %>
   </div>
 
   <div class="field">
     <%= form.label :ending_date %>
-    <%= form.date_select :ending_date %>
+    <%= form.datetime_select :ending_date %>
   </div>
 
   <div class="actions">
