@@ -1,28 +1,34 @@
- modals with their columns and datatypes
-1. User
- 1. id: integer
- 2. names: string
- 3. type :string
- 4. email: string
-
-2. Task
- 1. id: integer
- 2. name: string
- 3. status: string
- 4. priority: integer
- 5. start_date: timedate
- 6. end_date: timedate
- 7. content :text
-
-user | task
------------- | -------------
-id | id
-Content in the first column | Content in the second column
 
 
-|  User table   |
-| ------------- |
-|  id: integer  |
-| name: text    |
-| type: string  |
-| email: string |
+|      User table      |
+| -------------------  |
+| columns |  datatypes |
+| -------------------- |
+|  id     :    integer |
+| name    :    text    |
+| type    :    string  |
+| email   :     string |
+
+
+
+|    task table          |
+| -------------------    |
+| columns   |  datatypes |
+| -----------------------|
+|  id       :  integer   |
+|user_id(fk) : references|
+| name      :  string    |
+| status    : string     |
+| priority  : integer    |
+| start_date: timedate   |
+| end_date  : timedate   |
+| content   : text       |
+
+
+|    labeling table       |
+| -------------------     |
+| columns  |   datatypes  |
+| --------------------    |
+|  id      :   integer    |
+|task_id(fk): references  |   
+|label_id(fk): references |
