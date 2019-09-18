@@ -7,7 +7,10 @@ class CreateTasks < ActiveRecord::Migration[5.2]
       t.string :priority
       t.datetime :beginning_date
       t.datetime :ending_date
+<<<<<<< HEAD
+=======
 
+>>>>>>> 0092248665927e8253602191d6718d14e42f6bc0
       t.timestamps
     end
   end
