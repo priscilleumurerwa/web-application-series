@@ -4,11 +4,11 @@ RSpec.feature "Task management function", type: :feature do
  # In scenario (alias of it), write the processing of the test for each item you want to check
  background  do
    #User.create!(name: "priscille", email: 'priscille.umurerwa@gmail.Com',  password: '1234567')
-   #User.create!(name: "Nina", email: 'na@gmail.Com',  password: '1234567')
+   #User.create!(name: "Nina", email: 'priscille.umurerwa@gmail.Com',  password: '1234567')
 end
 scenario "Test task list" do
    visit  root_path
-   #fill_in  'Email',  with: 'ni@gmail.Com'
+   #fill_in  'Email',  with: 'priscille.umurerwa@gmail.Com'
    #fill_in  'Password' ,  with: '1234567'
   # click_on  'Log in'
    #expect(page).to have_text('Signed in successfully.')

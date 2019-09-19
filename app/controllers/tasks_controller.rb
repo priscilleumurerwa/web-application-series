@@ -7,12 +7,12 @@ class TasksController < ApplicationController
     # @tasks = Task.search(params[:term])
     # @tasks = Task.all
     # @tasks = Task.all.order("created_at DESC")
-
+    
     @tasks = if params[:term]
-      Task.where('status LIKE ?', "%#{params[:term]}%")
-      Task.where('priority LIKE ?', "%#{params[:term]}%")
+      Task.where('status LIKE ?', "%#{params[:term]}%").page params[:page]
+      Task.where('priority LIKE ?', "%#{params[:term]}%").page params[:page]
     else
-      Task.all
+      @tasks = Task.order('name').page params[:page]
     end
   end
   # GET /tasks/1
