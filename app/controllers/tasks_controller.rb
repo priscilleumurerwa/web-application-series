@@ -10,6 +10,7 @@ class TasksController < ApplicationController
 
     @tasks = if params[:term]
       Task.where('status LIKE ?', "%#{params[:term]}%")
+      Task.where('priority LIKE ?', "%#{params[:term]}%")
     else
       Task.all
     end
