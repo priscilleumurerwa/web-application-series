@@ -5,12 +5,20 @@
    
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
+  <body> 
+  <nav class="navbar navbar-light">
+  <I><a class="navbar-brand">Welcome to Everleaf co.. LTD </a></I>
+  <form class="form-inline">
+    
+  </form>
+</nav>
+
     <%= yield %>
     <%= t('view.sample') %>
   </body>
