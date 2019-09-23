@@ -15,6 +15,12 @@ body{
     margin-left:5rem;
 
 }
+th {
+    padding-left: 2rem;
+}
+td{
+    padding-left: 2rem;  
+}
 
 /*
  * This is a manifest file that'll be compiled into application.css, which will include all the files
