@@ -1,6 +1,12 @@
 ja:
   view:
     sample: Samples
+    name: Task Name
+    content: content
+    Status:  Status
+    Priority: Priority
+    Beginning date: Beginning 
+    Ending date: Ending date
   activerecord:
     errors:
       messages:
