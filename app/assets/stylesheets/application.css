@@ -21,6 +21,10 @@ th {
 td{
     padding-left: 2rem;  
 }
+.field{
+    padding-bottom: 1rem;
+    padding-left: 2rem;
+}
 
 /*
  * This is a manifest file that'll be compiled into application.css, which will include all the files
