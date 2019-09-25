@@ -1,6 +1,6 @@
 class Task < ApplicationRecord
   paginates_per 3
-
+  belongs_to:user
   validates :name, presence: true
   validates :content, presence: true
   validates :status, presence: true
