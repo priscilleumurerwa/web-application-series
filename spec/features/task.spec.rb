@@ -24,11 +24,6 @@ RSpec.feature "Task management function", type: :feature do
    fill_in  'Content' ,  with: 'ruby task'
    # Click_on a button with a value (notation letter) of “Register”
    click_on  '登録する'
-   # Check if the information that is supposed to be registered by click is displayed on the task detail page
-   # (Assumption that transition to the task details screen will be made if the task is registered)
-   expect(page ).to  have_content  'ruby task'
-
-
     
     # Check if the information that is supposed to be registered by click is displayed on the task detail page
     # (Assumption that transition to the task details screen will be made if the task is registered)
