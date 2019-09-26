@@ -1,0 +1,21 @@
+<h1><%= @user.name %>page's</h1>
+<div class="container">
+<h3>Added user</h3>
+<div>
+<label>user name:</label>
+<%= @user.name %>
+</div>
+<div>
+<label>email:</label>
+<%= @user.email %>
+</div>
+<div>
+<%= link_to 'new task',new_task_path %><br>
+<%= link_to 'back', {controller: 'users',action: 'index'} %>
+</div>
+</div>
+
+
+
+
+<p>email address: <%= @user.email %></p>

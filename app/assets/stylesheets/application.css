@@ -1,3 +1,31 @@
+body{
+    background-color:white;
+
+
+}
+.navbar{
+    background:red;
+    margin-left:0;
+}
+.search{
+    margin-left:17rem;
+    margin-bottom:2rem;
+}
+.page{
+    margin-left:5rem;
+
+}
+th {
+    padding-left: 2rem;
+}
+td{
+    padding-left: 2rem;  
+}
+.field{
+    padding-bottom: 1rem;
+    padding-left: 2rem;
+}
+
 /*
  * This is a manifest file that'll be compiled into application.css, which will include all the files
  * listed below.
