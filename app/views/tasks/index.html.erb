@@ -1,4 +1,4 @@
-<% if logged_in? %>
+
 <p id="notice"><%= notice %></p>
 <h1>Tasks</h1>
 <div class="page"
@@ -31,6 +31,7 @@
         <td><%= task.priority %></td>
         <td><%= task.beginning_date %></td>
         <td><%= task.ending_date %></td>
+        
         <td><%= link_to 'Show', task %></td>
         <td><%= link_to 'Edit', edit_task_path(task) %></td>
         <td><%= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -43,4 +44,3 @@
 </div>
 <%= link_to 'New Task', new_task_path %>
 
-<% end %>
