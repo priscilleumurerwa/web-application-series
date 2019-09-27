@@ -13,6 +13,7 @@ class TasksController < ApplicationController
     else
      # @tasks = Task.order('name').page params[:page]
       Task.order('priority DESC').page(params[:page])
+      Task.order_list(params[:sort_by]).page params[:page]
     end
   end
   # GET /tasks/1
