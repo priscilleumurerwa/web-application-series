@@ -1,10 +1,10 @@
 body{
-    background-color:white;
+    background-color:darkolivegreen;
 
 
 }
 .navbar{
-    background:red;
+    background:darkseagreen;
     margin-left:0;
 }
 .search{
@@ -25,7 +25,14 @@ td{
     padding-bottom: 1rem;
     padding-left: 2rem;
 }
+ .footer{
+    background:darkseagreen;
+    height:15%;
 
+}
+.navbar-brand{
+    color:black;
+}
 /*
  * This is a manifest file that'll be compiled into application.css, which will include all the files
  * listed below.
