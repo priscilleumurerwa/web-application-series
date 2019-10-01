@@ -5,7 +5,7 @@ class TasksController < ApplicationController
   # GET /tasks.json
   def index
     # @tasks = Task.search(params[:term])
-     @tasks = Task.all
+     #@tasks = Task.all
      @tasks = Task.all.order("created_at DESC")
     
     @tasks = if params[:term]
@@ -13,6 +13,7 @@ class TasksController < ApplicationController
     else
      # @tasks = Task.order('name').page params[:page]
       Task.order('priority DESC').page(params[:page])
+      Task.order_list(params[:sort_by]).page params[:page]
     end
   end
   # GET /tasks/1
