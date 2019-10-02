@@ -12,7 +12,7 @@ class TasksController < ApplicationController
       Task.where('priority LIKE ? or status LIKE ?', "%#{params[:term]}%", "%#{params[:term]}%").page params[:page]
     else
      # @tasks = Task.order('name').page params[:page]
-      Task.order('priority DESC').page(params[:page])
+      #Task.order('priority DESC').page(params[:page])
       Task.order_list(params[:sort_by]).page params[:page]
     end
   end

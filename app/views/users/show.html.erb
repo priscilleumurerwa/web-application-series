@@ -11,6 +11,11 @@
  <strong>Password:</strong>
  <%= @user.password %>
 </p>
+<p>
+<strong>User_type:</strong>
+<%= @user.admin %>
+</p>
+
 
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>

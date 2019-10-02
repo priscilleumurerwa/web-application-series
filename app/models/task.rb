@@ -20,7 +20,7 @@ class Task < ApplicationRecord
     elsif sort_order == "status"
         order(Status: :desc)
         elsif sort_order == "priority"
-            order(Priority: :desc)
+            order(priority: :ASC)
         else
             order(created_at: :desc)
         end
