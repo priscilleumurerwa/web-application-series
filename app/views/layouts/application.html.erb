@@ -13,12 +13,11 @@
 
   <body> 
   <nav class="navbar navbar-light">
-  <I><a class="navbar-brand">Welcome to Everleaf co... LTD </a></I>
+  <I><a class="navbar-brand">Welcome to Everleaf co..LTD </a></I>
   <form class="form-inline">
   <% flash.each do |key, value| %>
     <%= content_tag(:div, value, class: "#{key}") %>
   <% end %>
-  
   <% if logged_in? %>
     <%= link_to 'Home', tasks_path %>&nbsp &nbsp
     <%= link_to "Profile", user_path(current_user.id) %>&nbsp &nbsp
@@ -32,5 +31,9 @@
 
 
     <%= yield %>
+    <nav class="footer fixed-bottom ">
+    <center><a class="navbar-brand" href="#"> This website was designed to give privileges to its client.</a></center>
+  </nav>
+</div>
   </body>
 </html>
