@@ -4,7 +4,7 @@ body{
 
 }
 .navbar{
-    background:darkseagreen;
+    background:#6B591D;
     margin-left:0;
 }
 .search{
@@ -26,12 +26,36 @@ td{
     padding-left: 2rem;
 }
  .footer{
-    background:darkseagreen;
-    height:15%;
+    background:#FDECED;
+    height:10%;
 
 }
 .navbar-brand{
     color:black;
+}
+.fielde{
+    width: 50%;
+    margin: auto
+}
+.login{
+    background-color: #EFCFB6;
+    margin: auto;
+    width: 50%;
+    margin-top: 20px;
+    border-radius: 20px;
+
+}
+.signup{
+    background-color: #EFCFB6;
+    margin: auto;
+    width: 50%;
+    margin-top: 20px;
+    border-radius: 20px;
+
+}
+.design{
+    width:50%;
+    margin :auto
 }
 /*
  * This is a manifest file that'll be compiled into application.css, which will include all the files

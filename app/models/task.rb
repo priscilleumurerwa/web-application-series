@@ -6,6 +6,7 @@ class Task < ApplicationRecord
   validates :priority, presence: true
   validates :beginning_date, presence: true
   validates :ending_date, presence: true
+  enum priority: [:high, :medium, :low]
   #belongs_to:user
  def self.search(term)
     if term
@@ -20,9 +21,9 @@ class Task < ApplicationRecord
     elsif sort_order == "status"
         order(Status: :desc)
         elsif sort_order == "priority"
-            order(Priority: :desc)
+            order(priority: :asc)
         else
-            order(created_at: :desc)
+         order(created_at: :desc)
         end
     end
 
