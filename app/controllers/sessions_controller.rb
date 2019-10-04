@@ -1,6 +1,6 @@
 class SessionsController < ApplicationController
 
-      def create
+    def create
         user = User.find_by(email: params[:session][:email].downcase)
     if user && user.authenticate(params[:session][:password])
       session[:user_id] = user.id
@@ -9,7 +9,6 @@ class SessionsController < ApplicationController
       flash.now[:danger] = 'Login failed'
       render 'new'
     end
-
     end
   def new
     
