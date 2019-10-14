@@ -57,6 +57,15 @@ td{
     width:50%;
     margin :auto
 }
+.admin{
+    padding-left: 100px;
+}
+.user{
+    padding-left: 100px;
+}
+.show{
+    padding-left: 100px;
+}
 /*
  * This is a manifest file that'll be compiled into application.css, which will include all the files
  * listed below.
