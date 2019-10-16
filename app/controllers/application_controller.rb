@@ -9,4 +9,7 @@ class ApplicationController < ActionController::Base
           order('id DESC') 
         end
       end
+      def autholize
+        redirect_to new_session_url,alert:"not authorized"if current_user.nil?
+      end
 end

@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_action :check_user, only: [:index]
     def new
         @user = User.new
     end
@@ -16,6 +17,7 @@ class UsersController < ApplicationController
         
   def show
     @user = User.find(params[:id])
+    @admin=user.name
   end  
   def edit
     @user= User.find(params[:id])
@@ -48,12 +50,18 @@ class UsersController < ApplicationController
  # end
  def current_user
   User.find_by(id: session[:user_id])
- endsss
-  end
+ end
+
     private
 
     def user_params
       params.require(:user).permit(:name, :email, :password,
-                                 :password_confirmation, :user_type)
+                                 :password_confirmation, :user_type, :user_id)
     end
+    def check_user
+    if current_user && current_user.user_type != "admin"
+     redirect_to root_path, notice: "only admin can access this page"
+    end
+    end
+  
 end
