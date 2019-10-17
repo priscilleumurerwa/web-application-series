@@ -3,13 +3,39 @@ require 'rails_helper'
 # On the right side of this RSpec.feature, write the test item name like "task management feature" (grouped by do ~ end)
 RSpec.feature "Task management function", type: :feature do
 # In scenario (alias of it), write the processing of the test for each item you want to check.
+background do
+  User.create!(name: "priscille", email: 'prisc@gmail.com', user_type: 'admin',  password: '123456')
+  visit  root_path
+  #click_on 'Login'
+  fill_in  'Email' ,  with: 'prisc@gmail.com'
+  fill_in  'Password' ,  with: '123456'
+  click_on  'Log in'
+  expect(page).to have_text ('')
+  #click_on 'New Task'
+    #fill_in  'Name' ,  with: 'task1'
+    #fill_in  'Content' ,  with: 'content1'
+    # fill_in  'Status' ,  with: 'status1'
+    # fill_in  'Priority' ,  with: 'Priority1'
+    #click_on 'Unda'
+end
   scenario "Test task list" do
+    visit root_path
+    Task.create(name: "web", content: "testtesttest", beginning_date: "10,12,2019",ending_date: "12,12,2019",priority:"medium",status: "done")
+  fill_in  'Email',  with: 'pri@gmail.Com'
+  fill_in  'Password' ,  with: '123456'
+  click_on  'Log in'
+expect(page).to have_text('')
+   visit  new_task_path
+   fill_in  'Name' ,  with: 'web'
+   fill_in  'Content' ,  with: 'testtesttest'
+   click_on '登録する'
+   expect(page).to have_content 'testtesttest'
     Task.create!(name: 'test_task_1', content: 'testtesttest',status: 'started',priority: 'medium', beginning_date: '10.2.2019', ending_date: '20.10.2019')
-    Task.create!(name: 'test_task_2', content: 'samplesample',status: 'completed',priority: 'high', beginning_date: '10.2.2019', ending_date: '20.10.2019')
+    #Task.create!(name: 'test_task_2', content: 'samplesample',status: 'completed',priority: 'high', beginning_date: '10.2.2019', ending_date: '20.10.2019')
     visit tasks_path
     save_and_open_page
     expect(page).to have_content 'testtesttest'
-    expect(page).to have_content 'samplesample'
+    #expect(page).to have_content 'samplesample'
   end
   scenario "Test task creation" do
     # visit to new_task_path (transition to task registration page)
@@ -34,28 +60,24 @@ RSpec.feature "Task management function", type: :feature do
     visit task_path(id: @task.id)
     expect(page).to have_content('test_task_01')
     expect(page).to have_content('testtesttest')
+  end 
+
+  scenario "Test whether tasks are sorted by priority" do
+    visit  new_task_path
+   Task.create(name: "web", content: "testtest", beginning_date: "10,12,2019",ending_date: "12,12,2019",priority:"medium",status: "done")
+   Task.order("priority asc")
   end
+
+  scenario "Test whether tasks are arranged by deadline" do
+    visit  new_task_path
+   Task.create(name: "web", content: "testtest", beginning_date: "10,12,2019",ending_date: "12,12,2019",priority:"medium",status: "done")
+   Task.order("ending_date asc")
+  end
+
   scenario "Test whether tasks are arranged in descending order of creation date" do
     Task.create!(name: 'test_task_01', content: 'testtesttest',status: 'started',priority: 'medium', beginning_date: '10.2.2019', ending_date: '20.10.2019')
     Task.create!(name: 'test_task_02', content: 'samplesample',status: 'completed',priority: 'high', beginning_date: '10.2.2019', ending_date: '20.10.2019')
     @task = Task.order('created_at ASC')
-  end
-  scenario "Test task updating" do
-    task1=Task.create!(name: 'test_task_01', content: 'testtesttest', status: 'started',priority: 'medium', beginning_date: '10.2.2019', ending_date: '20.10.2019')
-    visit edit_task_path(id: task1.id)
-    fill_in 'Name', with: 'name update'
-    fill_in 'Content', with: 'task update'
-    click_on '更新する'
-    visit tasks_path
-    expect(page).to have_content('name update')
-    expect(page).to have_content('task update')
-  end
-  scenario 'Test Task Deletion' do
-    Task.create!(name: 'test_task_01', content: 'testtesttest',status: 'started',priority: 'medium', beginning_date: '10.2.2019', ending_date: '20.10.2019')
-    visit tasks_path
-    expect(page).to have_content('testtesttest')
-    click_on 'Destroy'
-    expect(page).not_to have_content('testtesttest')
   end
 end
 

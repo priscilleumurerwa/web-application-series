@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
-  before_action :check_user, only: [:index]
+ # before_action :check_user, only: [:index]
+  before_action :only_create_user_when_none_signed_in,only: [:new, :create]
     def new
         @user = User.new
     end
@@ -17,7 +18,7 @@ class UsersController < ApplicationController
         
   def show
     @user = User.find(params[:id])
-    @admin=user.name
+    #@admin=user.name
   end  
   def edit
     @user= User.find(params[:id])
@@ -63,5 +64,11 @@ class UsersController < ApplicationController
      redirect_to root_path, notice: "only admin can access this page"
     end
     end
+    def only_create_user_when_none_signed_in
+      if current_user
+        redirect_to users_path,  notice: "you can't create user when signed in"
+      end
+    
+    end  
   
 end
