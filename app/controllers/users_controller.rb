@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
  # before_action :check_user, only: [:index]
+ before_action :only_see_own_page, only: [:show]
   before_action :only_create_user_when_none_signed_in,only: [:new, :create]
     def new
         @user = User.new
@@ -10,10 +11,17 @@ class UsersController < ApplicationController
     def create
         @user = User.new(user_params) 
         if @user.save
-         redirect_to user_path(@user.id)
+        session[:user_id] = user.id
+        redirect_to tasks_path(@user.id)
           else
             render 'new'
         end
+    end
+    def only_see_own_page
+      @user = User.find(params[:id])
+      if current_user != @user
+        redirect_to tasks_path, notice: "sorry, you are not allowed to see other user's profile"
+      end
     end
         
   def show
