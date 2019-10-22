@@ -7,7 +7,7 @@ class Task < ApplicationRecord
   validates :beginning_date, presence: true
   validates :ending_date, presence: true
   enum priority: [:high, :medium, :low]
-  #belongs_to:user
+  belongs_to:user
  def self.search(term)
     if term
         where("status or priority or ending_date LIKE ?", "%# {term}%").page params[:page].per_page(3)

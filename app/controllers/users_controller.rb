@@ -11,7 +11,7 @@ class UsersController < ApplicationController
     def create
         @user = User.new(user_params) 
         if @user.save
-        session[:user_id] = user.id
+        session[:user_id] = @user.id
         redirect_to tasks_path(@user.id)
           else
             render 'new'
@@ -44,6 +44,9 @@ class UsersController < ApplicationController
   # DELETE method for deleting a product from database based on id
   def destroy
     @user = User.find(params[:id])
+    if @user.tasks.present?
+      Task.where(user_id: params[:id]).destroy_all
+    end
     if @user.delete
       flash[:notice] = 'user deleted!'
       redirect_to root_path

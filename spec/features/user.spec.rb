@@ -35,7 +35,7 @@ scenario "Test user details" do
  @user= User.create!(name: 'priscille', email: 'priscille@gmail.com', user_type: 'admin', password: '123456')
  visit user_path(id: @user.id)
   expect(page).to have_text('')
- #expect(page).to have_content 'admin'
+
 end
 scenario "Test user updating" do
  @user = User.first

@@ -3,5 +3,6 @@
 <% @users.each do |user| %>
 Name : <%= user.name %><br>
 Email :<%= user.email %><br>
+Tasks :<%= user.tasks.count %><br>
 <% end %>
 </div>

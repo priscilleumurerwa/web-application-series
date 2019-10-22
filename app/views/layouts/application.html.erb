@@ -24,7 +24,8 @@
     <%= link_to 'Home', tasks_path %>&nbsp &nbsp
     <%= link_to "Profile", user_path(current_user.id) %>&nbsp &nbsp
     <%= link_to "Logout", session_path(current_user.id), method: :delete %>&nbsp &nbsp 
-    <%= link_to 'Created task', tasks_path %>
+    <%= link_to 'Created task', tasks_path %>&nbsp &nbsp
+    <%= link_to 'users', users_path %>
     </div>
   <% else %>
     <%= link_to "Sign up", new_user_path %>&nbsp &nbsp
