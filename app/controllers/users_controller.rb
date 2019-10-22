@@ -1,7 +1,9 @@
 class UsersController < ApplicationController
- # before_action :check_user, only: [:index]
+ 
+ before_action :check_user, only: [:index]
  before_action :only_see_own_page, only: [:show]
   before_action :only_create_user_when_none_signed_in,only: [:new, :create]
+  before_action :set_user, only: [:show, :edit, :update, :destroy]
     def new
         @user = User.new
     end
@@ -47,19 +49,30 @@ class UsersController < ApplicationController
     if @user.tasks.present?
       Task.where(user_id: params[:id]).destroy_all
     end
-    if @user.delete
-      flash[:notice] = 'user deleted!'
-      redirect_to root_path
+    if @user.id == current_user.id
+      redirect_to admin_users_url, notice: "You can not delete signed in user"
+      @admin = User.admin
+    elsif @admin == 1
+      redirect_to admin_users_url, notice: "Atleast one admin must remain!"
     else
-      flash[:error] = 'Failed to delete this user!'
-      render :destroy
+      @user.destroy
+      redirect_to admin_users_url, notice: 'User was successfully destroyed.'
     end
   end
-  # we used strong parameters for the validation of params
-  # def user_params
-  #   params.require(:product).permit(:name, :email :password, :password_confirmation, :title)
-  # end
- # end
+  
+  # destroy
+    #@user = User.find(params[:id])
+    #if @user.tasks.present?
+      #Task.where(user_id: params[:id]).destroy_all
+    #end
+    #if @user.delete
+     # flash[:notice] = 'user deleted!'
+      #redirect_to root_path
+    #else
+#      render :destroy
+    #end
+  #end
+  
  def current_user
   User.find_by(id: session[:user_id])
  end
@@ -81,5 +94,7 @@ class UsersController < ApplicationController
       end
     
     end  
-  
+    def set_user
+      @user = User.find(params[:id])
+    end
 end
