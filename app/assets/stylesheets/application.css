@@ -69,6 +69,10 @@ td{
 .header{
     margin-right: 7rem;
 }
+.mgtpage{
+    padding-left: 20rem;
+    padding-bottom:2rem;
+}
 /*
  * This is a manifest file that'll be compiled into application.css, which will include all the files
  * listed below.

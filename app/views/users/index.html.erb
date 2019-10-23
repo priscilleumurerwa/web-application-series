@@ -15,11 +15,9 @@
      <tr>
        <td><%= link_to user.name, user %></td>
        <td><%= user.email %></td>
-       <% if false %>
-       <% if user.tasks %>
+       
        <td><%= user.tasks.count %></td>
-       <% end %>
-       <% end %>
+       
        <div>
        <td><%= link_to 'Edit', edit_user_path(user) %></td>
        <td>
