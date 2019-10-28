@@ -19,22 +19,22 @@ background do
     #click_on 'Unda'
 end
   scenario "Test task list" do
-    visit root_path
-    Task.create(name: "web", content: "testtesttest", beginning_date: "10,12,2019",ending_date: "12,12,2019",priority:"medium",status: "done")
-  fill_in  'Email',  with: 'pri@gmail.Com'
-  fill_in  'Password' ,  with: '123456'
-  click_on  'Log in'
-expect(page).to have_text('')
+#     visit root_path
+#     Task.create(name: "web", content: "testtesttest", beginning_date: "10,12,2019",ending_date: "12,12,2019",priority:"medium",status: "done")
+#   fill_in  'Email',  with: 'pri@gmail.Com'
+#   fill_in  'Password' ,  with: '123456'
+#   click_on  'Log in'
+# expect(page).to have_text('')
    visit  new_task_path
    fill_in  'Name' ,  with: 'web'
    fill_in  'Content' ,  with: 'testtesttest'
    click_on '登録する'
    expect(page).to have_content 'testtesttest'
-    Task.create!(name: 'test_task_1', content: 'testtesttest',status: 'started',priority: 'medium', beginning_date: '10.2.2019', ending_date: '20.10.2019')
-    #Task.create!(name: 'test_task_2', content: 'samplesample',status: 'completed',priority: 'high', beginning_date: '10.2.2019', ending_date: '20.10.2019')
-    visit tasks_path
-    save_and_open_page
-    expect(page).to have_content 'testtesttest'
+    # Task.create!(name: 'test_task_1', content: 'testtesttest',status: 'started',priority: 'medium', beginning_date: '10.2.2019', ending_date: '20.10.2019')
+    # #Task.create!(name: 'test_task_2', content: 'samplesample',status: 'completed',priority: 'high', beginning_date: '10.2.2019', ending_date: '20.10.2019')
+    # visit tasks_path
+    # save_and_open_page
+    # expect(page).to have_content 'testtesttest'
     #expect(page).to have_content 'samplesample'
   end
   scenario "Test task creation" do
@@ -42,8 +42,8 @@ expect(page).to have_text('')
     visit new_task_path
     # In the input field labeled "Task Name" and in the input field labeled "Task Details"
     # Fill in the task title and content respectively
-    Task.create!(name: 'test_task_1', content: 'testtesttest',status: 'started',priority: 'medium', beginning_date: '10.2.2019', ending_date: '20.10.2019')
-    Task.create!(name: 'test_task_2', content: 'samplesample',status: 'completed',priority: 'high', beginning_date: '10.2.2019', ending_date: '20.10.2019')
+    # Task.create!(name: 'test_task_1', content: 'testtesttest',status: 'started',priority: 'medium', beginning_date: '10.2.2019', ending_date: '20.10.2019')
+    # Task.create!(name: 'test_task_2', content: 'samplesample',status: 'completed',priority: 'high', beginning_date: '10.2.2019', ending_date: '20.10.2019')
     # Click_on a button with a value (notation letter) of “Register”
     
     fill_in  'Name' ,  with: 'completed'
@@ -56,10 +56,16 @@ expect(page).to have_text('')
     #expect(page).to  have_content('testtesttest')
   end
   scenario "Test task details" do
-    @task = Task.create!(name: 'test_task_01', content: 'testtesttest',status: 'started',priority: 'medium', beginning_date: '10.2.2019', ending_date: '20.10.2019')
+    #@task = Task.create!(name: 'test_task_01', content: 'testtesttest',status: 'started',priority: 'medium', beginning_date: '10.2.2019', ending_date: '20.10.2019')
+    visit  new_task_path
+    fill_in  'Name' ,  with: 'completed'
+   fill_in  'Content' ,  with: 'ruby task'
+   # Click_on a button with a value (notation letter) of “Register”
+   click_on  '登録する'
+   @task = Task.first
     visit task_path(id: @task.id)
-    expect(page).to have_content('test_task_01')
-    expect(page).to have_content('testtesttest')
+    expect(page).to have_content('ruby task')
+    expect(page).to have_content('ruby task')
   end 
 
   scenario "Test whether tasks are sorted by priority" do
@@ -75,8 +81,13 @@ expect(page).to have_text('')
   end
 
   scenario "Test whether tasks are arranged in descending order of creation date" do
-    Task.create!(name: 'test_task_01', content: 'testtesttest',status: 'started',priority: 'medium', beginning_date: '10.2.2019', ending_date: '20.10.2019')
-    Task.create!(name: 'test_task_02', content: 'samplesample',status: 'completed',priority: 'high', beginning_date: '10.2.2019', ending_date: '20.10.2019')
+    # Task.create!(name: 'test_task_01', content: 'testtesttest',status: 'started',priority: 'medium', beginning_date: '10.2.2019', ending_date: '20.10.2019')
+    # Task.create!(name: 'test_task_02', content: 'samplesample',status: 'completed',priority: 'high', beginning_date: '10.2.2019', ending_date: '20.10.2019')
+    visit  new_task_path
+    fill_in  'Name' ,  with: 'completed'
+    fill_in  'Content' ,  with: 'ruby task'
+   # Click_on a button with a value (notation letter) of “Register”
+   click_on  '登録する'
     @task = Task.order('created_at ASC')
   end
 end

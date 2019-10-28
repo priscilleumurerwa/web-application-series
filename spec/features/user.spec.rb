@@ -18,22 +18,22 @@ scenario "Test number of users" do
 end
 scenario "Test user list" do
  User.create!(name: 'priscille', email: 'priscille@gmail.com', user_type: 'admin', password: '123456')
- visit users_path
+ visit admin_users_path
  expect(page ).to  have_content  'priscille'
  expect(page ).to  have_content  'priscille'
 end
 scenario "Test user creation" do
  User.create!(name: 'priscille', email: 'priscille@gmail.com', user_type: 'admin', password: '123456')
- visit users_path
+ visit admin_users_path
  expect(page ).to  have_content  'priscille'
 end
 scenario "test enable user creation page" do
- visit users_path
+ visit admin_users_path
  expect(page ).to  have_content  'priscille'
 end
 scenario "Test user details" do
  @user= User.create!(name: 'priscille', email: 'priscille@gmail.com', user_type: 'admin', password: '123456')
- visit user_path(id: @user.id)
+ visit admin_user_path(id: @user.id)
   expect(page).to have_text('')
 
 end
@@ -45,7 +45,7 @@ scenario "Test user updating" do
  end
  #fill_in 'Content', with: 'content update'
  click_on 'Update user'
- visit users_path
+ visit admin_users_path
 #  expect(page).to have_content 'name update'
  expect(page).to have_content('')
 end
@@ -55,7 +55,7 @@ scenario 'Test user Deletion' do
  @user.destroy
  # expect(page).to have_content('testtesttest')
  # click_on 'Destroy'
- visit users_path
+ visit admin_users_path
  expect(page).not_to have_content('umurerwa')
 end
 end

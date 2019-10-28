@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
  
 #  before_action :check_user, only: [:index]
- before_action :only_see_own_page, only: [:show]
+#  before_action :only_see_own_page, only: [:show]
   # before_action :only_create_user_when_none_signed_in,only: [:new, :create]
   before_action :set_user, only: [:show, :edit, :update, :destroy]
     def new

@@ -22,10 +22,12 @@
 <% if @user.id == task.user_id %>
 <ul>
 <li>
-Name:<%= @user.tasks.name + '' %> <br/>Content:<%= task.content %>
+Name:<%= @user.tasks.name %> <br/>Content:<%= task.content %>
 </li>
 </ul>
- <% end %>
+<% end %>
+<% end %>
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>
 </div>
+
