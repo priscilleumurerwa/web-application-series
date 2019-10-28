@@ -12,6 +12,7 @@
  </thead>
  <tbody>
    <% @users.each do |user| %>
+    <% if user.user_type == "general user" %>
      <tr>
        <td><%= link_to user.name, user %></td>
        <td><%= user.email %></td>
@@ -26,6 +27,7 @@
        <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
      </tr>
      </div>
+   <% end %>
    <% end %>
  </tbody>
 </table>

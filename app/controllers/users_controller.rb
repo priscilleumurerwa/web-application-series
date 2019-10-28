@@ -29,6 +29,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     #@admin=user.name
+    @user_tasks = Task.order(:created_at).includes(:user)
   end  
   def edit
     @user= User.find(params[:id])

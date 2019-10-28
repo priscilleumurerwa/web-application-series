@@ -21,11 +21,13 @@
   <% end %>
   <% if logged_in? %>
   <div class ="header">
-    <%= link_to 'Home', tasks_path %>&nbsp &nbsp
-    <%= link_to "Profile", user_path(current_user.id) %>&nbsp &nbsp
-    <%= link_to "Logout", session_path(current_user.id), method: :delete %>&nbsp &nbsp 
-    <%= link_to 'Created task', tasks_path %>&nbsp &nbsp
-    <%= link_to 'users', users_path %>
+    <%= link_to 'Home', tasks_path %>&nbsp &nbsp&nbsp &nbsp
+    <%= link_to "Profile", user_path(current_user.id) %>&nbsp &nbsp&nbsp &nbsp
+  
+    <%= link_to 'Created task', tasks_path %>&nbsp &nbsp&nbsp &nbsp
+    <%= link_to 'general users', users_path %>&nbsp &nbsp&nbsp &nbsp
+    <%= link_to 'admin and general users', admin_users_path %>&nbsp &nbsp &nbsp &nbsp
+    <%= link_to "Logout", session_path(current_user.id), method: :delete %>
     </div>
   <% else %>
     <%= link_to "Sign up", new_user_path %>&nbsp &nbsp
