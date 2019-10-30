@@ -31,7 +31,11 @@
   </div>
   <div class = "design">
   <%= f.label :user_type %>
-  <%= f.select:user_type,['','admin','general user'] %><br><br>
+  <br>
+  <%= f.radio_button :user_type, 'general user', checked:true %>
+  <%= f.label :general_user %>
+  <%= f.radio_button :user_type, 'admin', disabled: (true unless current_user && current_user.user_type == 'admin') %>
+  <%= f.label :admin %>
   </div>
   <div class = "design">
   <%= f.submit "Create my account", class:"form-control" %>

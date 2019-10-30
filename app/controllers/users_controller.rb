@@ -1,8 +1,8 @@
 class UsersController < ApplicationController
  
   before_action :check_user, only: [:index]
- before_action :only_see_own_page, only: [:show]
-   before_action :only_create_user_when_none_signed_in,only: [:new, :create]
+  before_action :only_see_own_page, only: [:show]
+  before_action :only_create_user_when_none_signed_in,only: [:new, :create]
   before_action :set_user, only: [:show, :edit, :update, :destroy]
     def new
         @user = User.new
@@ -86,7 +86,7 @@ class UsersController < ApplicationController
     end
     def check_user
     if current_user && current_user.user_type != "admin"
-     redirect_to root_path, notice: "only admin can access this page"
+     redirect_to tasks_path, notice: "only admin can access this page"
     end
     end
     def only_create_user_when_none_signed_in

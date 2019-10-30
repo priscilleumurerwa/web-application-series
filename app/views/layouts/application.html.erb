@@ -27,6 +27,7 @@
     <%= link_to 'Created task', tasks_path %>&nbsp &nbsp&nbsp &nbsp
     <%= link_to 'general users', users_path %>&nbsp &nbsp&nbsp &nbsp
     <%= link_to 'admin and general users', admin_users_path %>&nbsp &nbsp &nbsp &nbsp
+    <%= link_to 'labels', labels_path %>&nbsp &nbsp &nbsp &nbsp
     <%= link_to "Logout", session_path(current_user.id), method: :delete %>
     </div>
   <% else %>
