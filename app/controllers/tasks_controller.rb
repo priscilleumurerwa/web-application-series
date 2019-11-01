@@ -7,13 +7,13 @@ class TasksController < ApplicationController
   def index
     # @tasks = Task.search(params[:term])
      #@tasks = Task.all
-     @tasks = Task.all.order("created_at DESC")
+     
     
-    @tasks = if params[:term]
-      Task.where('priority LIKE ? or status LIKE ?', "%#{params[:term]}%", "%#{params[:term]}%").page params[:page]
-    elsif params[:term1]
+    @tasks = if params[:term1]
+      Label.where('name ILIKE ?' , "%#{params[:term]}%").page params[:page]
+    
       Task.joins(:labels)
-      .wher("labels name ILIKE ?", "%#{params[term1]}%").page params[:page]
+       .where("labels.name ILIKE ?", "%#{params[:term1]}%"). page params[:page]
     else
 
      # @tasks = Task.order('name').page params[:page]
@@ -28,8 +28,7 @@ class TasksController < ApplicationController
 
   # GET /tasks/new
   def new
-    @task = Task.new
-    @task.user_id = current_user.id
+    @task = current_user.tasks.build
   end
 
   # GET /tasks/1/edit
@@ -39,7 +38,9 @@ class TasksController < ApplicationController
   # POST /tasks
   # POST /tasks.json
   def create
-    @task = Task.new(task_params)
+    
+
+     @task = current_user.tasks.build(task_params)
 
     respond_to do |format|
       if @task.save
@@ -55,6 +56,7 @@ class TasksController < ApplicationController
   # PATCH/PUT /tasks/1
   # PATCH/PUT /tasks/1.json
   def update
+    @task = current_user.tasks.build(task_params)
     respond_to do |format|
       if @task.update(task_params)
         format.html { redirect_to @task, notice: 'Task was successfully updated.' }
@@ -86,6 +88,6 @@ end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def task_params
-      params.require(:task).permit(:name, :content, :status, :priority, :beginning_date, :ending_date , :term, :user_id)
+      params.require(:task).permit(:name, :content, :status, :priority, :beginning_date, :ending_date , :user_id, label_ids:[])
     end
 end

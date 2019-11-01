@@ -24,11 +24,10 @@ class LabelsController < ApplicationController
   # POST /labels
   # POST /labels.json
   def create
-    @label = Label.new(label_params)
-
+    @label = current_user.labels.build(label_params)
     respond_to do |format|
       if @label.save
-        format.html { redirect_to @label, notice: 'Label was successfully created.' }
+        format.html { redirect_to labels_path, notice: 'Label was successfully created.' }
         format.json { render :show, status: :created, location: @label }
       else
         format.html { render :new }

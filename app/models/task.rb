@@ -8,9 +8,22 @@ class Task < ApplicationRecord
   validates :ending_date, presence: true
   enum priority: [:high, :medium, :low]
   belongs_to:user
+
+  has_many :tasks_labels, dependent: :destroy
+  has_many :labels, through: :tasks_labels
+
+  accepts_nested_attributes_for :tasks_labels, :reject_if => proc { |a|
+   a['label_id'].blank? }
+ accepts_nested_attributes_for :labels
+ before_save do
+   self.label.gsub!(/[\[\]\"]/,"") if attribute_present? ("label")
+ end
+  
  def self.search(term)
     if term
-        where("status or priority or ending_date LIKE ?", "%# {term}%").page params[:page].per_page(3)
+        where('name LIKE ?', "%#{term}%")
+    elsif term1
+        where('name LIKE ?', "%#{term1}%")   
     else
         order(' id asc')
     end
@@ -26,6 +39,4 @@ class Task < ApplicationRecord
          order(created_at: :desc)
         end
     end
-
- 
 end
