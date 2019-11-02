@@ -14,6 +14,7 @@
 
   <tbody>
     <% @labels.each do |label| %>
+      <% if label.user_id == current_user.id %>
       <tr>
         <td><%= label.name %></td>
         <td><%= label.details %></td>
@@ -22,6 +23,7 @@
         <td><%= link_to 'Edit', edit_label_path(label) %></td>
         <td><%= link_to 'Destroy', label, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
+    <% end %>
     <% end %>
   </tbody>
 </table>
