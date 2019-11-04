@@ -28,8 +28,11 @@
     <%= link_to "Profile", user_path(current_user.id) %>&nbsp &nbsp&nbsp &nbsp
   
     <%= link_to 'Created task', tasks_path %>&nbsp &nbsp&nbsp &nbsp
+    
     <%= link_to 'general users', users_path %>&nbsp &nbsp&nbsp &nbsp
+    <% if current_user && current_user.user_type == 'admin' %>
     <%= link_to 'admin and general users', admin_users_path %>&nbsp &nbsp &nbsp &nbsp
+    <% end %>
     <%= link_to 'labels', labels_path %>&nbsp &nbsp &nbsp &nbsp
     <%= link_to "Logout", session_path(current_user.id), method: :delete %>
     </div>
