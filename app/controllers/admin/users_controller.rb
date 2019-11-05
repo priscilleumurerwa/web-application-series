@@ -17,7 +17,6 @@ class Admin::UsersController < ApplicationController
             else
               render 'new'
       end
-
       def only_see_own_page
         @user = User.find(params[:id])
         if current_user != @user
