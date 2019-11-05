@@ -17,8 +17,6 @@ class Admin::UsersController < ApplicationController
           redirect_to tasks_path(@user.id)
             else
               render 'new'
-          end
-          
       end
       def only_see_own_page
         @user = User.find(params[:id])
