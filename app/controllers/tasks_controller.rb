@@ -10,7 +10,7 @@ class TasksController < ApplicationController
      
     
     @tasks = if params[:term1]
-      Label.where('name ILIKE ?' , "%#{params[:term]}%").page params[:page]
+      #Label.where('name ILIKE ?' , "%#{params[:term]}%").page params[:page]
     
       Task.joins(:labels)
        .where("labels.name ILIKE ?", "%#{params[:term1]}%"). page params[:page]

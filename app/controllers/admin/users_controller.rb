@@ -17,12 +17,7 @@ class Admin::UsersController < ApplicationController
             else
               render 'new'
       end
-      def only_see_own_page
-        @user = User.find(params[:id])
-        if current_user != @user
-          redirect_to tasks_path, notice: "sorry, you are not allowed to see other user's profile"
-        end
-      end
+    end 
           
     def show
       @user = User.find(params[:id])
@@ -76,12 +71,19 @@ class Admin::UsersController < ApplicationController
       if current_user && current_user.user_type != "admin"
        redirect_to tasks_path, notice: "only admin can access this page"
       end
-      end 
+    end 
    def current_user
     User.find_by(id: session[:user_id])
    end
   
       private
+
+      def only_see_own_page
+        @user = User.find(params[:id])
+        if current_user != @user
+          redirect_to tasks_path, notice: "sorry, you are not allowed to see other user's profile"
+        end
+      end
   
       def user_params
         params.require(:user).permit(:name, :email, :password,
@@ -92,9 +94,8 @@ class Admin::UsersController < ApplicationController
        if current_user
           redirect_to users_path,  notice: "you can't create user when signed in"
         end
-      end  
-      def set_user
-        @user = User.find(params[:id])
-      end
+      end     
+  def set_user
+    @user = User.find(params[:id])
   end
 end

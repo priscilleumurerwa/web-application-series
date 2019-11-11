@@ -19,12 +19,7 @@ class UsersController < ApplicationController
             render 'new'
         end
     end
-    def only_see_own_page
-      @user = User.find(params[:id])
-      if current_user != @user
-        redirect_to tasks_path, notice: "sorry, you are not allowed to see other user's profile"
-      end
-    end
+    
         
   def show
     @user = User.find(params[:id])
@@ -96,5 +91,11 @@ class UsersController < ApplicationController
     end  
     def set_user
       @user = User.find(params[:id])
+    end
+    def only_see_own_page
+      @user = User.find(params[:id])
+      if current_user != @user
+        redirect_to tasks_path, notice: "sorry, you are not allowed to see other user's profile"
+      end
     end
 end
