@@ -7,19 +7,15 @@ class TasksController < ApplicationController
   def index
     # @tasks = Task.search(params[:term])
      #@tasks = Task.all
-     
-    
-    @tasks = if params[:term1]
-      #Label.where('name ILIKE ?' , "%#{params[:term]}%").page params[:page]
-    
+     @remainders = Label.all
+   @tasks = if params[:term]
+      Task.where('status LIKE ? or name LIKE ?', "%#{params[:term]}%", "%#{params[:term]}%").page params[:page]
+     elsif params[:term1]
       Task.joins(:labels)
-       .where("labels.name ILIKE ?", "%#{params[:term1]}%"). page params[:page]
-    else
-
-     # @tasks = Task.order('name').page params[:page]
-      #Task.order('priority DESC').page(params[:page])
-      Task.order_list(params[:sort_by]).page params[:page]
-    end
+           .where("labels.name ILIKE ?", "%#{params[:term1]}%").page params[:page]
+       else
+       Task.order_list(params[:sort_by]).page params[:page]
+       end
   end
   # GET /tasks/1
   # GET /tasks/1.json
@@ -85,7 +81,6 @@ end
     def set_task
       @task = Task.find(params[:id])
     end
-
     # Never trust parameters from the scary internet, only allow the white list through.
     def task_params
       params.require(:task).permit(:name, :content, :status, :priority, :beginning_date, :ending_date , :user_id, label_ids:[])

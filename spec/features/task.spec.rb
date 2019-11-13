@@ -90,11 +90,11 @@ end
    click_on  '登録する'
     @task = Task.order('created_at ASC')
   end
-  scenario "test task search by atached labels " do
+  scenario "test task search by attached labels " do
     # Task.create(name: "web", content: "testtest", beginning_date: "10,12,2019",ending_date: "12,12,2019",priority:"medium",status: "done")
     visit new_task_path
     fill_in  'Name' ,  with: 'completed'
-   fill_in  'Content' ,  with: 'ruby task'
+   fill_in  'Content' ,  with: 'label task'
    # Click_on a button with a value (notation letter) of “Register”
    click_on  '登録する'
 
@@ -113,9 +113,9 @@ end
     @task.labels = [@label1,@label2]
     @task.save
     visit tasks_path
-    fill_in  'term1' ,  with: 'label title1'
+    fill_in  'term1' ,  with: 'label name1'
     click_on '  Search'
-    expect(page).to have_content('ruby task')
+    expect(page).to have_content('label task')
   end
  
 end

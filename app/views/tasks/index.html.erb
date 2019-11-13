@@ -1,12 +1,19 @@
-
+<div class="form">
 <p id="notice"><%= notice %></p>
 <h1>Tasks</h1>
+<div class="search1" >
+<%= form_tag(tasks_path, method: :get, class:"form-inline my-2 my-lg-0") do %>
+  <%= text_field_tag :term, params[:term], class:"form-control mr-sm-2", type:"search", placeholder:"Search" %>
+  <%= submit_tag 'Search', name: nil, class:"btn btn-outline-success my-2 my-sm-0" %>
+  </div>
+<% end %><br>
 <div class="page"
 <%= paginate @tasks %> 
-
+<div class="search2">
 <%= form_tag(tasks_path,method: :get) do %>
   <%= text_field_tag :term1, params[:term1], placeholder: "search by label name" %>
   <%= submit_tag "  Search", name: nil %>
+  </div>
   <% end %>
 <b><%= t('view.sample') %></b><br><br>
 <table>
@@ -49,3 +56,4 @@
 <%= link_to "priority high order", tasks_path(sort_by:'priority') %>
 </p>
 <%= link_to 'New Task', new_task_path %>
+</div>
